@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6f4e37 0%, #3e2723 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: #d4a76a;
+    color: #3e2723;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #ffd700;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.cards-container {
+    position: relative;
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+.cards {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.swipe-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.location-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.location-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.location-card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.location-card h3 {
+    margin-bottom: 10px;
+    color: #3e2723;
+    font-size: 1.4rem;
+}
+
+.location-card p {
+    margin-bottom: 8px;
+    color: #5d4037;
+}
+
+.location-card .rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.location-card .address {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.location-card .swipe-hint {
+    text-align: center;
+    color: #9e9e9e;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.loading {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    padding: 20px;
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .cards-container {
+        height: 450px;
+    }
+    
+    .location-card img {
+        height: 200px;
+    }
+}

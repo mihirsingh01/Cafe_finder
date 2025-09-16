@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☕ Cafe Finder</h1>
+            <div class="buttons">
+                <button id="findCafes">Find Nearby Cafes</button>
+                <button id="showSaved">Show Saved Cafes</button>
+            </div>
+        </header>
+        
+        <div class="cards-container">
+            <div class="cards"></div>
+        </div>
+        
+        <div class="loading" id="loading">Loading cafes...</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
