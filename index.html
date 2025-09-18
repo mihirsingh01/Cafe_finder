@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Finder</title>
+    <title>Lucknow Cafe Finder</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>☕ Cafe Finder</h1>
-            <div class="buttons">
-                <button id="findCafes">Find Nearby Cafes</button>
-                <button id="showSaved">Show Saved Cafes</button>
-            </div>
-        </header>
-        
-        <div class="cards-container">
-            <div class="cards"></div>
-        </div>
-        
-        <div class="loading" id="loading">Loading cafes...</div>
-    </div>
 
-    <script src="script.js"></script>
+    <header>
+        <h1>☕ Lucknow Cafe Finder</h1>
+        <p>Your guide to the best coffee spots in the city.</p>
+    </header>
+
+    <main>
+        <div id="cafe-list" class="cafe-grid"></div>
+    </main>
+
 </body>
 </html>
