@@ -2,7 +2,7 @@
 const cafes = [
     {
         name: "Cappuccino Blast",
-        location: "Hazratganj",
+        location: "Aminabad",
         image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
         features: ["Wi-Fi", "Outdoor Seating"]
     },
@@ -55,4 +55,4 @@ function displayCafes() {
 }
 
 // Call the function to display the cafes when the page loads
-displayCafes();
+displayCafes();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
