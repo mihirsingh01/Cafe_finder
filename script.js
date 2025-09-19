@@ -1,58 +1,62 @@
-// This is our temporary database of cafes in Lucknow
-const cafes = [
-    {
-        name: "Cappuccino Blast",
-        location: "Aminabad",
-        image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
-        features: ["Wi-Fi", "Outdoor Seating"]
-    },
-    {
-        name: "The Hazelnut Factory",
-        location: "Gomti Nagar",
-        image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8",
-        features: ["Wi-Fi", "Power Outlets", "Pet-Friendly"]
-    },
-    {
-        name: "Homey's Cafe",
-        location: "Aliganj",
-        image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf",
-        features: ["Wi-Fi", "Cozy Reading Nook"]
-    },
-    {
-        name: "Buttercup Bungalow",
-        location: "Mall Avenue",
-        image: "https://images.unsplash.com/photo-1511920183276-5941c3e938e3",
-        features: ["Instagrammable", "Desserts"]
-    }
-];
-
-// Get the container element from the HTML where we will insert the cafe cards
+// Get the container element from the HTML once at the start.
 const cafeListContainer = document.getElementById('cafe-list');
 
-// Function to create and display all cafe cards
-function displayCafes() {
-    // Clear the container first
-    cafeListContainer.innerHTML = '';
+/**
+ * Renders a list of cafe objects to the page.
+ * @param {Array} cafesToRender - The array of cafe objects to display.
+ */
+function renderCafes(cafesToRender) {
+  // If the array is empty, show a message.
+  if (cafesToRender.length === 0) {
+    cafeListContainer.innerHTML = '<p>No cafes found!</p>';
+    return;
+  }
 
-    // Loop through each cafe in our database array
-    cafes.forEach(cafe => {
-        // Create the HTML for one cafe card using a template literal
-        const cafeCardHTML = `
-            <div class="cafe-card">
-                <img src="${cafe.image}" alt="${cafe.name}">
-                <div class="cafe-card-info">
-                    <h2>${cafe.name}</h2>
-                    <p>${cafe.location}</p>
-                    <div class="features">
-                        ${cafe.features.map(feature => `<span>${feature}</span>`).join('')}
-                    </div>
-                </div>
-            </div>
-        `;
-        // Add the new card's HTML to the container
-        cafeListContainer.innerHTML += cafeCardHTML;
-    });
+  // Use map() to create an array of HTML strings for each cafe.
+  const cafeCardsHTML = cafesToRender.map(cafe => {
+    // Generate the HTML for the feature tags separately for cleaner code.
+    const featuresHTML = cafe.features.map(feature => `<span>${feature}</span>`).join('');
+
+    return `
+      <div class="cafe-card">
+          <img src="${cafe.image}" alt="${cafe.name}" loading="lazy">
+          <div class="cafe-card-info">
+              <h2>${cafe.name}</h2>
+              <p>${cafe.location}</p>
+              <div class="features">
+                  ${featuresHTML}
+              </div>
+          </div>
+      </div>
+    `;
+  }).join(''); // Join the array of HTML strings into a single string.
+
+  // Set the innerHTML of the container only ONCE. This is much more efficient.
+  cafeListContainer.innerHTML = cafeCardsHTML;
 }
 
-// Call the function to display the cafes when the page loads
-displayCafes();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+/**
+ * Main function to fetch data and initialize the application.
+ */
+async function main() {
+  try {
+    // Show a loading message while we fetch the data.
+    cafeListContainer.innerHTML = '<p>Loooading cafes...</p>';
+
+    const response = await fetch('data.json');
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const allCafes = await response.json();
+    
+    // Now that we have the data, render it.
+    renderCafes(allCafes);
+
+  } catch (error) {
+    console.error("Failed to load cafes:", error);
+    cafeListContainer.innerHTML = '<p>Sorry, we could not load the cafes at this time.</p>';
+  }
+}
+
+// Start the application when the script loads.
+main();
