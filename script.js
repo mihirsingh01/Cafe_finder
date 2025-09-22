@@ -1,20 +1,19 @@
-// Get the container element from the HTML once at the start.
+// Get the HTML container for the cafe list once at the start.
 const cafeListContainer = document.getElementById('cafe-list');
 
 /**
- * Renders a list of cafe objects to the page.
- * @param {Array} cafesToRender - The array of cafe objects to display.
+ * Renders an array of cafe objects into the DOM.
+ * @param {Array} cafesToRender The array of cafes to display.
  */
 function renderCafes(cafesToRender) {
-  // If the array is empty, show a message.
+  // If the array is empty, display a helpful message.
   if (cafesToRender.length === 0) {
-    cafeListContainer.innerHTML = '<p>No cafes found!</p>';
+    cafeListContainer.innerHTML = '<p>Noo cafes found!</p>';
     return;
   }
 
   // Use map() to create an array of HTML strings for each cafe.
   const cafeCardsHTML = cafesToRender.map(cafe => {
-    // Generate the HTML for the feature tags separately for cleaner code.
     const featuresHTML = cafe.features.map(feature => `<span>${feature}</span>`).join('');
 
     return `
@@ -29,7 +28,7 @@ function renderCafes(cafesToRender) {
           </div>
       </div>
     `;
-  }).join(''); // Join the array of HTML strings into a single string.
+  }).join(''); // Join the array of HTML into a single, large string.
 
   // Set the innerHTML of the container only ONCE. This is much more efficient.
   cafeListContainer.innerHTML = cafeCardsHTML;
@@ -40,8 +39,8 @@ function renderCafes(cafesToRender) {
  */
 async function main() {
   try {
-    // Show a loading message while we fetch the data.
-    cafeListContainer.innerHTML = '<p>Loooading cafes...</p>';
+    // Show a loading message while fetching data.
+    cafeListContainer.innerHTML = '<p>Loading cafes...</p>';
 
     const response = await fetch('data.json');
     if (!response.ok) {
@@ -49,7 +48,7 @@ async function main() {
     }
     const allCafes = await response.json();
     
-    // Now that we have the data, render it.
+    // Once data is loaded, render it.
     renderCafes(allCafes);
 
   } catch (error) {
@@ -58,5 +57,5 @@ async function main() {
   }
 }
 
-// Start the application when the script loads.
+// Start the application.
 main();
