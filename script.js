@@ -8,7 +8,7 @@ const cafeListContainer = document.getElementById('cafe-list');
 function renderCafes(cafesToRender) {
   // If the array is empty, display a helpful message.
   if (cafesToRender.length === 0) {
-    cafeListContainer.innerHTML = '<p>Noo cafess found!</p>';
+    cafeListContainer.innerHTML = '<p>Noo cafeess found!</p>';
     return;
   }
 
