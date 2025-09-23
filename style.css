@@ -1,69 +1,33 @@
-/* General body styling */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 20px;
+/* Modern CSS Reset & Global Settings */
+*, *::before, *::after {
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Header styling */
-header {
-    text-align: center;
-    margin-bottom: 40px;
+/*
+  COLOR THEME & FONT DEFINITIONS
+  Using CSS variables (:root) makes it easy to manage themes.
+*/
+:root {
+  /* Light Theme (Default) */
+  --bg-color: #F3F4F6;
+  --text-color: #1F2937;
+  --text-muted: #6B7280;
+  --card-bg: #FFFFFF;
+  --primary-color: #6D28D9;
+  --primary-accent-bg: #EDE9FE;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    margin-bottom: 0;
-}
-
-/* Grid layout for the cafe list */
-.cafe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Individual cafe card styling */
-.cafe-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-}
-
-.cafe-card:hover {
-    transform: translateY(-5px);
-}
-
-.cafe-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.cafe-card-info {
-    padding: 20px;
-}
-
-.cafe-card-info h2 {
-    margin: 0 0 10px;
-}
-
-.cafe-card-info p {
-    margin: 0 0 15px;
-    color: #666;
-    font-size: 0.9em;
-}
-
-.features span {
-    background-color: #e0e7ff;
-    color: #4338ca;
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 0.8em;
-    margin-right: 5px;
-}
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #111827;
+    --text-color: #F9FAFB;
+    --text-muted: #9CA3AF;
+    --card-bg: #1F2937;
+    --primary-color: #8B5CF6;
+    --primary-accent-bg: #3730A3;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+    --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
