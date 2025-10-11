@@ -1,226 +1,27 @@
-/* Import a modern font from Google Fonts */
-:root {
-  --primary-color: #6D28D9; /* A deep violet */
-  --light-gray: #F3F4F6;
-  --medium-gray: #6B7280;
-  --dark-gray: #1F2937;
-  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-/* Import a modern font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-:root {
-    --primary-color: #6D28D9;
-    --accent-color: #F59E42;
-    --light-gray: #F3F4F6;
-    --medium-gray: #6B7280;
-    --dark-gray: #1F2937;
-    --card-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-    --card-hover-shadow: 0 20px 25px -5px rgba(0,0,0,0.15), 0 10px 10px -5px rgba(0,0,0,0.08);
-    --transition: 0.3s cubic-bezier(.4,0,.2,1);
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ede9fe 0%, #f3f4f6 100%);
-    color: var(--dark-gray);
-    margin: 0;
-    padding: 2rem;
-    min-height: 100vh;
-    line-height: 1.6;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-header h1 {
-    font-weight: 700;
-    font-size: 2.7rem;
-    color: var(--primary-color);
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-}
-
-header h1 .emoji {
-    display: inline-block;
-    transition: transform var(--transition);
-}
-
-header h1:hover .emoji {
-    transform: rotate(15deg) scale(1.1);
-}
-
-header p {
-    color: var(--medium-gray);
-    font-size: 1.15rem;
-    margin-top: 0;
-}
-
-button {
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-family: inherit;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(109,40,217,0.08);
-    transition: background var(--transition), transform var(--transition);
-    margin: 0.5rem;
-}
-
-button:hover, button:focus {
-    background: var(--accent-color);
-    color: var(--dark-gray);
-    transform: translateY(-2px) scale(1.04);
-    outline: none;
-}
-
-.cafe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.cafe-card {
-    background: white;
-    border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform var(--transition), box-shadow var(--transition);
-    position: relative;
-    animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1);
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px);}
-    to { opacity: 1; transform: translateY(0);}
-}
-
-.cafe-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: var(--card-hover-shadow);
-}
-
-.cafe-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-bottom: 1px solid #ede9fe;
-    transition: filter var(--transition);
-}
-
-.cafe-card:hover img {
-    filter: brightness(0.95) saturate(1.1);
-}
-
-.cafe-card-info {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.cafe-card-info h2 {
-    margin: 0 0 0.5rem;
-    font-weight: 600;
-    font-size: 1.35rem;
-    color: var(--primary-color);
-}
-
-.cafe-card-info p {
-    margin: 0 0 1rem;
-    color: var(--medium-gray);
-    flex-grow: 1;
-}
-
-.features {
-    margin-top: auto;
-}
-
-.features span {
-    display: inline-block;
-    background-color: #ede9fe;
-    color: var(--primary-color);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-right: 8px;
-    margin-top: 6px;
-    box-shadow: 0 1px 4px rgba(109,40,217,0.07);
-    transition: background var(--transition), color var(--transition);
-}
-
-.features span:hover {
-    background: var(--primary-color);
-    color: #fff;
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 0.5rem;
-    }
-    .cafe-card-info {
-        padding: 1rem;
-    }
-    .cafe-grid {
-        gap: 1rem;
-    }
-    header h1 {
-        font-size: 2rem;
-    }
-}
 /* General body styling */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--light-gray);
-    color: var(--dark-gray);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
     margin: 0;
-    padding: 2rem;
-    line-height: 1.6;
+    padding: 20px;
 }
 
 /* Header styling */
 header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 40px;
 }
 
 header h1 {
-    font-weight: 600;
-    font-size: 2.5rem;
-    color: var(--dark-gray);
+    margin-bottom: 0;
 }
-
-header h1 .emoji {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-header h1:hover .emoji {
-    transform: rotate(15deg) scale(1.1);
-}
-
-header p {
-    color: var(--medium-gray);
-    font-size: 1.1rem;
-}
-
 
 /* Grid layout for the cafe list */
 .cafe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 25px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -228,52 +29,41 @@ header p {
 /* Individual cafe card styling */
 .cafe-card {
     background: white;
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease-in-out;
 }
 
 .cafe-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-5px);
 }
 
 .cafe-card img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
 }
 
 .cafe-card-info {
-    padding: 1.5rem;
-    flex-grow: 1; /* Ensures footer content aligns */
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
 }
 
 .cafe-card-info h2 {
-    margin: 0 0 0.5rem;
-    font-weight: 600;
-    font-size: 1.25rem;
+    margin: 0 0 10px;
 }
 
 .cafe-card-info p {
-    margin: 0 0 1rem;
-    color: var(--medium-gray);
-    flex-grow: 1; /* Pushes features to the bottom */
+    margin: 0 0 15px;
+    color: #666;
+    font-size: 0.9em;
 }
 
 .features span {
-    display: inline-block;
-    background-color: #EDE9FE;
-    color: var(--primary-color);
-    padding: 6px 12px;
-    border-radius: 999px; /* Pill shape */
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-right: 6px;
-    margin-top: 6px;
+    background-color: #e0e7ff;
+    color: #4338ca;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-right: 5px;
 }

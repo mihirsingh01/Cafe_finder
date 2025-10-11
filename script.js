@@ -1,18 +1,20 @@
-// Get the HTML container for the cafe list once at the start.
-const cafeListContainer = document.getElementById('cafe-list');
+// Get HTML elements once at the start.
+const cafeListContainer = document.getElementById('cafe_-list');
+const searchBar = document.getElementById('search-bar');
+
+// A global variable to hold all cafe data after it's fetched.
+let allCafes = [];
 
 /**
  * Renders an array of cafe objects into the DOM.
  * @param {Array} cafesToRender The array of cafes to display.
  */
 function renderCafes(cafesToRender) {
-  // If the array is empty, display a helpful message.
   if (cafesToRender.length === 0) {
-    cafeListContainer.innerHTML = '<p>Noo cafeess found!</p>';
+    cafeListContainer.innerHTML = '<p>No cafes match your search!</p>';
     return;
   }
 
-  // Use map() to create an array of HTML strings for each cafe.
   const cafeCardsHTML = cafesToRender.map(cafe => {
     const featuresHTML = cafe.features.map(feature => `<span>${feature}</span>`).join('');
 
@@ -28,10 +30,26 @@ function renderCafes(cafesToRender) {
           </div>
       </div>
     `;
-  }).join(''); // Join the array of HTML into a single, large string.
+  }).join('');
 
-  // Set the innerHTML of the container only ONCE. This is much more efficient.
   cafeListContainer.innerHTML = cafeCardsHTML;
+}
+
+/**
+ * Sets up the event listener for the search bar.
+ */
+function setupSearch() {
+  searchBar.addEventListener('keyup', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    
+    const filteredCafes = allCafes.filter(cafe => {
+      const nameMatch = cafe.name.toLowerCase().includes(searchTerm);
+      const locationMatch = cafe.location.toLowerCase().includes(searchTerm);
+      return nameMatch || locationMatch;
+    });
+
+    renderCafes(filteredCafes);
+  });
 }
 
 /**
@@ -39,17 +57,17 @@ function renderCafes(cafesToRender) {
  */
 async function main() {
   try {
-    // Show a loading message while fetching data.
     cafeListContainer.innerHTML = '<p>Loading cafes...</p>';
 
     const response = await fetch('data.json');
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const allCafes = await response.json();
+    // Store the fetched data in our global variable.
+    allCafes = await response.json();
     
-    // Once data is loaded, render it.
-    renderCafes(allCafes);
+    renderCafes(allCafes); // Initial render of all cafes.
+    setupSearch(); // Set up the search functionality.
 
   } catch (error) {
     console.error("Failed to load cafes:", error);
