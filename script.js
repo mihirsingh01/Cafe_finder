@@ -1,6 +1,6 @@
 // Get HTML elements once at the start.
-const cafeListContainer = document.getElementById('cafe_-list');
-const searchBar = document.getElementById('search-bar');
+const cafeListContainer = document.getElementById('cafe-list');
+let searchBar = document.getElementById('search-bar');
 
 // A global variable to hold all cafe data after it's fetched.
 let allCafes = [];
@@ -57,14 +57,26 @@ function setupSearch() {
  */
 async function main() {
   try {
+    if (!cafeListContainer) {
+      console.error('No element with id "cafe-list" found in the page.');
+      return;
+    }
+
     cafeListContainer.innerHTML = '<p>Loading cafes...</p>';
 
-    const response = await fetch('data.json');
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+    // Try to fetch local data.json. If it doesn't exist or fails, fall back to sample data.
+    try {
+      const response = await fetch('data.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      allCafes = await response.json();
+    } catch (err) {
+      console.warn('Could not load data.json — using sample data instead.', err);
+      allCafes = [
+        { name: 'The Cozy Cup', location: 'Hazratganj', image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=60', features: ['Wi-Fi', 'Outdoor Seating'] },
+        { name: 'Bean & Browse', location: 'Alambagh', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=60', features: ['Pet Friendly', 'Board Games'] },
+        { name: 'Latte Love', location: 'Gomti Nagar', image: 'https://images.unsplash.com/photo-1521305916504-4a1121188589?w=800&q=60', features: ['Vegan Options', 'Live Music'] }
+      ];
     }
-    // Store the fetched data in our global variable.
-    allCafes = await response.json();
     
     renderCafes(allCafes); // Initial render of all cafes.
     setupSearch(); // Set up the search functionality.
