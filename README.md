@@ -51,7 +51,7 @@ To run a local copy of this project, follow these steps.
 
 ## 🔮 Future Enhancements
 
-Here are some planned improvements for the project:
+Here are some planned improvements for the projects:
 
 * [ ] **Search Functionality**: Implement a search bar to filter cafes by name or location.
 * [ ] **Feature Filtering**: Add buttons to allow users to filter cafes by amenities like "Wi-Fi" or "Pet-Friendly".
