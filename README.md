@@ -30,7 +30,7 @@ To run a local copy of this project, follow these steps.
 
 ### Prerequisites
 
-* A modern web browser (e.g., Chrome, Firefox).
+* A modern web browser (e.g., Chrome, Firefox,Opera).
 * A code editor like [Visual Studio Code](https://code.visualstudio.com/) with the **Live Server** extension.
 
 ### Installation
